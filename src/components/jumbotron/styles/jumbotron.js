@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export const Inner = styled.div `
     display: flex;
@@ -22,7 +22,7 @@ export const Pane = styled.div`
     }`
 
 export const Item = styled.div`
-    display: flex;
+    
     border-bottom: 8px solid #222;
     padding: 50px 5%;
     color: white;
