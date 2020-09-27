@@ -3,8 +3,6 @@ import {Container, Inner, Title, Header, Body, Item, Frame} from '../accordion/s
 
 const ToggleContext = createContext();
 
-
-
 export default function Accordion({children, ...restProps}){
     return(
         <Container {...restProps}>
