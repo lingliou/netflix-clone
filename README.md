@@ -1,4 +1,4 @@
-A full-blown Netflix clone use React JS.
+A Netflix clone use React JS.
 
 It covers React:
 -Styled Component
