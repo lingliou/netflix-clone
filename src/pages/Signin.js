@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import { HeaderContainer } from "../containers/header"
+import { FooterContainer } from '../containers/footer'
 import {Form} from "../components"
 
 
@@ -8,6 +9,9 @@ export default function Signin(){
     const [emailAddress, setEmailAddress] = useState('')
     const [password, setPassword] = useState('')
 
+    const isInvalid = password === '' || emailAddress === '' 
+    //form button disabled when input is not completed
+
     const handleSignin = (event) => {
         event.preventDefualt()
 
@@ -15,6 +19,7 @@ export default function Signin(){
     }
 
     return (
+    <>
     <HeaderContainer>
         <Form>
             <Form.Title>Sign In</Form.Title>
@@ -34,7 +39,7 @@ export default function Signin(){
                     onChange= { target => setPassword(target.value)}
                 />
 
-                <Form.Submit disabled = {false} type = 'submit '>Sign In</Form.Submit>
+                <Form.Submit disabled = {isInvalid} type = 'submit '>Sign In</Form.Submit>
                 <Form.Text>
                     New to Netflix? <Form.Link to="/signup">Sign up now.</Form.Link>
                 </Form.Text>
@@ -44,5 +49,7 @@ export default function Signin(){
             </Form.Base>
         </Form>
     </HeaderContainer>
+    <FooterContainer />
+    </>
     )
 }
