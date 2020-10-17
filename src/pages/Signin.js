@@ -1,10 +1,15 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
+import { useHistory } from 'react-router-dom'
+import {FirebaseContext} from '../context/firebase'
 import { HeaderContainer } from "../containers/header"
 import { FooterContainer } from '../containers/footer'
-import {Form} from "../components"
+import { Form } from "../components"
+import * as ROUTES from '../constants/routes'
 
 
 export default function Signin(){
+    const history = useHistory()
+    const {firebase} = useContext(FirebaseContext)
     const [error, setError] = useState('')
     const [emailAddress, setEmailAddress] = useState('')
     const [password, setPassword] = useState('')
@@ -13,10 +18,23 @@ export default function Signin(){
     //form button disabled when input is not completed
 
     const handleSignin = (event) => {
-        event.preventDefualt()
+        event.preventDefault()
 
         //firebase authentication
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(emailAddress, password)
+            .then( ()=> {
+                //push to the browse page
+                history.push(ROUTES.BROWSE)
+                setEmailAddress('')
+                setPassword('')
+                setError('')
+            })
+            .catch(error => setError(error.message)
+            )
     }
+
 
     return (
     <>
@@ -29,14 +47,14 @@ export default function Signin(){
                 <Form.Input 
                     placeholder = 'Email Address'
                     value = {emailAddress}
-                    onChange = {target => setEmailAddress(target.value)}
+                    onChange = {({target}) => setEmailAddress(target.value)}
                 />
                 <Form.Input 
                     placeholder = 'Password'
                     type='password'
                     value = {password}
                     autoComplete = 'off'
-                    onChange= { target => setPassword(target.value)}
+                    onChange= { ({target}) => setPassword(target.value)}
                 />
 
                 <Form.Submit disabled = {isInvalid} type = 'submit '>Sign In</Form.Submit>
