@@ -32,6 +32,16 @@ export const Background = styled.div`
 
 export const Frame = styled.div``
 
+export const Group = styled.div`
+    display: flex;
+    align-items: center;`
+
+export const Text = styled.p`
+    color: white;
+    font-size: 22px;
+    line-height: normal;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);`
+
 export const Logo = styled.img`
     height: 32px;
     width: 108px;

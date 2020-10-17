@@ -1,5 +1,5 @@
 import React from 'react';
-import { Background, Container, Logo, ButtonLink } from './styles/header'
+import { Background, Container, Logo, ButtonLink, Group, Link, Text } from './styles/header'
 import { Link as ReachRouterLink } from 'react-router-dom';
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -10,6 +10,9 @@ Header.Frame = function HeaderFrame({ children, ...restProps }) {
     return <Container {...restProps}>{children}</Container>;
 }
 
+Header.Group =  function HeaderGroup({children, ...restProps}){
+    return <Group {...restProps}> {children} </Group>
+}
 Header.Logo = function HeaderLogo({ to, ...restProps }) {
     return (
         <ReachRouterLink to={to}>
@@ -20,4 +23,12 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
 
 Header.ButtonLink = function HeaderButtonLink({children, ...restProps}){
     return <ButtonLink {...restProps}>{children}</ButtonLink>
+}
+
+Header.Link = function HeaderLink({children, ...restProps}){
+    return <Link {...restProps}>{children}</Link>
+}
+
+Header.Text = function HeaderText({children, ...restProps}){
+    return <Text {...restProps}>{children}</Text>
 }
