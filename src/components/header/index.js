@@ -1,5 +1,7 @@
-import React from 'react';
-import { Background, Container, Logo, ButtonLink, Group, Link, Text, Feature, FeatureCallOut, PlayButton } from './styles/header'
+import React, {useState} from 'react';
+import { Background, Container, Logo, ButtonLink, 
+    Group, Link, Text, Feature, FeatureCallOut, 
+    PlayButton, Search, SearchIcon, SearchInput } from './styles/header'
 import { Link as ReachRouterLink } from 'react-router-dom';
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -43,4 +45,21 @@ Header.FeatureCallOut = function HeaderFeatureCallout ({children, ...restProps})
 
 Header.PlayButton = function HeaderPlayButton ({children, ...restProps}){
     return <PlayButton {...restProps}> {children} </PlayButton>
+}
+
+Header.Search = function HeaderSearch ({searchTerm, setSearchTerm, ...restProps}){
+    const [searchActive, setSearchActive] = useState(false)
+    return (
+        <Search {...restProps}>
+            <SearchIcon onClick={()=> setSearchActive(!searchActive)}>
+                <img src="/images/icons/search.png" alt="Search" />
+            </SearchIcon>
+            <SearchInput 
+                value={searchTerm}
+                onChange= {({target})=>setSearchTerm(target.value)}
+                placeholder='Search files and series'
+                active={searchActive}
+                />
+        </Search>
+    )
 }
