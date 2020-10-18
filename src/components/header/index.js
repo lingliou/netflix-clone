@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { Background, Container, Logo, ButtonLink, 
     Group, Link, Text, Feature, FeatureCallOut, 
-    PlayButton, Search, SearchIcon, SearchInput } from './styles/header'
+    PlayButton, Search, SearchIcon, SearchInput,
+    Profile, Picture, DropDown } from './styles/header'
 import { Link as ReachRouterLink } from 'react-router-dom';
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -62,4 +63,16 @@ Header.Search = function HeaderSearch ({searchTerm, setSearchTerm, ...restProps}
                 />
         </Search>
     )
+}
+
+Header.Profile = function HeaderProfile({children, ...restProps}){
+    return <Profile {...restProps}> {children}</Profile>
+}
+
+Header.Picture = function HeaderPicture({ src, ...restProps}){
+    return <Picture {...restProps} src={`/images/users/${src}.png`}/>
+}
+
+Header.DropDown = function HeaderDropDown({children, ...restProps}){
+    return <DropDown {...restProps}> {children}</DropDown>
 }
