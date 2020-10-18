@@ -1,5 +1,5 @@
 import React from 'react';
-import { Background, Container, Logo, ButtonLink, Group, Link, Text } from './styles/header'
+import { Background, Container, Logo, ButtonLink, Group, Link, Text, Feature, FeatureCallOut, PlayButton } from './styles/header'
 import { Link as ReachRouterLink } from 'react-router-dom';
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -31,4 +31,16 @@ Header.Link = function HeaderLink({children, ...restProps}){
 
 Header.Text = function HeaderText({children, ...restProps}){
     return <Text {...restProps}>{children}</Text>
+}
+
+Header.Feature = function HeaderFeature ({children, ...restProps}){
+    return <Feature {...restProps}> {children} </Feature>
+}
+
+Header.FeatureCallOut = function HeaderFeatureCallout ({children, ...restProps}){
+    return <FeatureCallOut {...restProps}> {children} </FeatureCallOut>
+}
+
+Header.PlayButton = function HeaderPlayButton ({children, ...restProps}){
+    return <PlayButton {...restProps}> {children} </PlayButton>
 }
